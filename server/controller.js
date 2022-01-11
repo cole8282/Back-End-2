@@ -17,14 +17,11 @@ module.exports = {
   },
   createHouse: function(req, res) {
     //assign the front end values sent in(req.body) properties to the new obj
-    let address = req.body.address;
-    let price = req.body.price;
-    let imageURL = req.body.imageURL;
     let newHouse = {
       id: globalId,
-      address,
-      price,
-      imageURL
+      address: req.body.address,
+      price: Number(req.body.price),
+      imageURL: req.body.imageURL
     };
     houseData.push(newHouse);
     res.status(200).send(houseData);
@@ -33,7 +30,7 @@ module.exports = {
     // let newHouse = {
     //   id: globalId,
     //   address,
-    //   price,
+    //   price: +price,
     //   imageURL
     // }
     // houseData.push(newHouse);
